@@ -3,3 +3,11 @@ spring:
     name: postgres-microservice-ec2
 
 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demodb
+    username: scott
+    password: tiger
+
+  jpa:
+    open-in-view: false
+    generate-ddl: true
