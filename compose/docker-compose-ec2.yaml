@@ -6,13 +6,14 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - db:/var/lib/postgresql/data
+      - ./data/postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=tiger
       - POSTGRES_USER=scott
       - POSTGRES_DB=demodb
 
-volumes:
-  db:
-    driver:
-      local
+  app:
+    restart: always
+    image: ghcr.io/rmortale/postgres-microservice-ec2:master
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/demodb
